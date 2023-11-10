@@ -1,0 +1,16 @@
+
+  <h3 class="display-3 text-center">Clientes Cadastrados</h3>
+  <div class="inputs">
+    <div class="col-4">
+      <div class="mb-1">Nome</div>
+      <input type="text" class="form-control" [(ngModel)]="nome" />
+    </div>
+    <div class="col-4">
+      <div class="mb-1">Idade</div>
+      <input type="number" class="form-control" [(ngModel)]="idade" />
+    </div>
+  </div>
+  <div class="d-flex mb-1 flex-row-reverse">
+    <button class="btn btn-primary"[ngClass]="idade < 18 ? 'disabled' : '' " (click)="inserirNovoTrem()">Adicionar</button>
+  </div>
+

@@ -1,0 +1,141 @@
+<table class="table text-center">
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Idade</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let cliente of listaClientes; let i = index">
+      <td>{{ cliente.nome }}</td>
+      <td>{{ cliente.idade }}</td>
+      <td>
+        <button
+          class="btn btn-warning"
+          data-bs-toggle="modal"
+          data-bs-target="#staticBackdropEditar"
+         (click)="getIndex = i">
+          Editar
+        </button>
+        |
+        <button class="btn btn-danger" (click)="excluirTrem(i)">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex mb-1 flex-row-reverse">
+  <button
+    class="btn btn-primary"
+    data-bs-toggle="modal"
+    data-bs-target="#staticBackdropLogs"
+  >
+    Logs
+  </button>
+</div>
+
+<!-- Modal para Logs -->
+<div
+  class="modal fade"
+  id="staticBackdropLogs"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Ação</th>
+              <th>Descrição</th>
+              <th>Data</th>
+              <th>Horário</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let log of listaLogs; let i = index">
+              <td>{{ log.acao }}</td>
+              <td>{{ log.descricao }}</td>
+              <td>{{ log.data }}</td>
+              <td>{{ log.horario }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Fechar
+        </button>
+        <button type="button" class="btn btn-success" (click)="limparLogs()">
+          Limpar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal para Edição -->
+<div
+  class="modal fade"
+  id="staticBackdropEditar"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Editar</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body inputs">
+        <div class="col-4">
+          <div class="mb-1">Nome</div>
+          <input type="text" class="form-control" [(ngModel)]="nome" />
+        </div>
+        <div class="col-4">
+          <div class="mb-1">Idade</div>
+          <input
+            type="text"
+            class="form-control"
+            [(ngModel)]="idade"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Fechar
+        </button>
+        <button
+          type="button"
+          class="btn btn-sucess"
+          data-bs-dismiss="modal"
+          (click)="editarTrem()"
+        >
+          Confirmar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
