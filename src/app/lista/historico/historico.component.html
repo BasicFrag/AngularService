@@ -1,0 +1,30 @@
+<div class="container">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ação</th>
+        <th>Descrição</th>
+        <th>Data</th>
+        <th>Horário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let log of listaLogs; let i = index">
+        <td>{{ log.acao }}</td>
+        <td>{{ log.descricao }}</td>
+        <td>{{ log.data }}</td>
+        <td>{{ log.horario }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="d-flex mb-1 justify-content-between">
+      <button class="btn btn-primary" routerLink="../clientes">Voltar</button>
+      <div class="d-flex mb-1 justify-content-between">
+        <button type="button" class="btn btn-danger" (click)="limparLogs()">
+          Limpar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
